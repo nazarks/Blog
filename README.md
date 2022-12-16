@@ -1,2 +1,3 @@
 # Blog
-A simple blog-app
+
+A simple flask-app
