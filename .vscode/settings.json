@@ -1,0 +1,99 @@
+{
+  "terminal.integrated.fontSize": 16,
+  "editor.showUnused": true, // show gray unused var
+  "python.linting.pylintEnabled": false, //disable pylint
+  "python.terminal.activateEnvInCurrentTerminal": true, // автоматически активировать виртуальное окружение
+  "python.linting.enabled": true, // линтер включен
+  //"python.linting.pycodestyleEnabled": true, // PEP8
+  "files.autoSave": "onFocusChange", // автоматически сохранять файл при переключенни на другое окно
+  "editor.rulers": [
+    120 // рисует линию, где заканчивается 120-й символ строки
+  ],
+  "python.formatting.provider": "black", // использовать Black в качестве форматтера
+  "python.formatting.blackArgs": [
+    "--line-length", // длина строки 120 символов
+    "120"
+  ],
+  "python.linting.flake8Enabled": true, // использовать flake8 в качестве линтера
+  "flake8.args": [
+    "--max-line-length=120",
+    "--exclude=migrations/,settings.py,venv/,.git,.vscode/", // не проверять каталоги migrations/,settings.py,venv/
+    "--max-complexity=8"
+  ],
+  "editor.formatOnSave": true, // форматировать код, при любом сохранении - вот тут будет срабатывать Black
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true, // sort import
+    "editor.formatOnSave": true // format on save ctrl+S
+  },
+  "isort.args": ["--profile", "black"],
+
+  "python.analysis.indexing": true, // for django import or side lib
+  "python.analysis.packageIndexDepths": [
+    {
+      "name": "rest_framework",
+      "depth": 10,
+      "includeAllSymbols": true
+    },
+    {
+      "name": "django",
+      "depth": 10,
+      "includeAllSymbols": true
+    },
+    {
+      "name": "flask",
+      "depth": 10,
+      "includeAllSymbols": true
+    }
+  ],
+  // "flake8-unused-arguments.args": [
+  "unused-arguments-ignore-abstract-functions": true,
+  //   true
+  // ],
+
+  //"python.sortImports.args": ["--src=${workspaceFolder}"], // wrong sort import
+  "files.trimFinalNewlines": true, // remove last empty line
+
+  "emmet.includeLanguages": {
+    "javascript": "html" // lets check html code inside js file
+  },
+
+  // "beautify.language": {
+  //   "html": ["django-html"] //  fix for django templates
+  // },
+  // "[django-html]": {
+  //   "editor.formatOnSave": true,
+  //   "editor.defaultFormatter": "HookyQR.beautify"
+  // },
+
+  // "[javascript]": {
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // },
+  // "[javascriptreact]": {
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // },
+  // "[typescript]": {
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // },
+  // "[typescriptreact]": {
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // },
+  "eslint.format.enable": true, // format js code
+  "eslint.alwaysShowStatus": true,
+
+  "cSpell.words": [
+    "authapp",
+    "Browsable",
+    "dzmph",
+    "mainapp",
+    "oysm",
+    "Paginations",
+    "TODOS",
+    "ujcqif",
+    "viewsets",
+    "zijxn"
+  ],
+  "python.testing.unittestArgs": ["-v", "-s", ".", "-p", "test*.py"],
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestEnabled": true,
+  "cSpell.language": "en,ru"
+}
