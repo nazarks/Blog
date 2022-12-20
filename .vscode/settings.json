@@ -43,6 +43,11 @@
       "name": "flask",
       "depth": 10,
       "includeAllSymbols": true
+    },
+    {
+      "name": "werkzeug",
+      "depth": 10,
+      "includeAllSymbols": true
     }
   ],
   // "flake8-unused-arguments.args": [
@@ -53,12 +58,32 @@
   //"python.sortImports.args": ["--src=${workspaceFolder}"], // wrong sort import
   "files.trimFinalNewlines": true, // remove last empty line
 
-  "emmet.includeLanguages": {
-    "javascript": "html" // lets check html code inside js file
+  "files.associations": {
+    "*.html": "jinja-html"
   },
 
-  // "beautify.language": {
-  //   "html": ["django-html"] //  fix for django templates
+  "emmet.includeLanguages": {
+    "javascript": "html", // lets check html code inside js file
+    "jinja-html": "html",
+    "jinja": "html",
+    "django-html": "html"
+    // "t": "html" // lets check html code inside js file
+  },
+
+  "beautify.language": {
+    "html": ["jinja-html"] //  fix for django templates
+  },
+  "[jinja-html]": {
+    "editor.defaultFormatter": "HookyQR.beautify",
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  },
+  // "[jinja]": {
+  //   "editor.defaultFormatter": "monosans.djlint",
+  //   "editor.detectIndentation": false,
+  //   "editor.tabSize": 2,
+  //   "editor.formatOnSave": true
   // },
   // "[django-html]": {
   //   "editor.formatOnSave": true,
@@ -77,8 +102,8 @@
   // "[typescriptreact]": {
   //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   // },
-  "eslint.format.enable": true, // format js code
-  "eslint.alwaysShowStatus": true,
+  // "eslint.format.enable": true, // format js code
+  // "eslint.alwaysShowStatus": true,
 
   "cSpell.words": [
     "authapp",
