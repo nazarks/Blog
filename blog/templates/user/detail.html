@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}
+User - {{ user_name }}
+{% endblock title %}
+
+
+{% block body %}
+<span>User name: {{ user_name }}</span>
+<br>
+<br>
+<a class="btn btn-primary btn-sm" href="{{ url_for('user_app.list') }}" role="button">User List</a>
+{% endblock body %}

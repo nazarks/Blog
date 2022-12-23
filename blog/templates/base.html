@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% block css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  {% endblock css %}
+
+  <title>
+    {% block title %}
+    Blog App
+    {% endblock title %}
+  </title>
+
+</head>
+
+<body>
+  {% include "main_navbar.html" %}
+  <div class="container">
+    {% block body %}
+    Content
+    {% endblock body %}
+  </div>
+
+  {% block js %}
+  <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  {% endblock js %}
+
+</body>
+
+</html>
