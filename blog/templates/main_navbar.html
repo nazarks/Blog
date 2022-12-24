@@ -16,20 +16,31 @@
             </a>
           </li>
           {% endfor %}
-
+          {% if current_user.is_authenticated  %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              {{current_user.username}}
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('user_app.profile', pk=current_user.id) }}">Profile</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('auth_app.logout') }}">Logout</a></li>
             </ul>
           </li>
+          {%else%}
+          <li class="nav-item">
+            <a class="nav-link {% if request.endpoint == 'auth_app.login' %} active {% endif %}" aria-current="page"
+              href="{{ url_for('auth_app.login') }}">
+              Login
+            </a>
+          </li>
+
+          {% endif %}
+
+
 
         </ul>
         <form class="d-flex" role="search">

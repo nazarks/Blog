@@ -7,6 +7,10 @@
 
 {% block body %}
 <div class="d-flex justify-content-center">
-  <h1> This is a Blog App</h1>
+  {% if current_user.is_authenticated %}
+  <h1>Hello! {{ current_user.username }} </h1>
+  {% else %}
+  <h1>Hello! Anon </h1>
+  {% endif %}
 </div>
 {% endblock body %}

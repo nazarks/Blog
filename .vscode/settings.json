@@ -48,6 +48,11 @@
       "name": "werkzeug",
       "depth": 10,
       "includeAllSymbols": true
+    },
+    {
+      "name": "sqlalchemy",
+      "depth": 10,
+      "includeAllSymbols": true
     }
   ],
   // "flake8-unused-arguments.args": [
