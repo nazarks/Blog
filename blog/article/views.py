@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 from werkzeug.exceptions import NotFound
 
-from blog.user.views import USERS
+from blog.models.user import User
 
 article_app = Blueprint("article_app", __name__, url_prefix="/articles", static_folder="../static")
 
@@ -39,7 +39,7 @@ def article_detail(pk):
         article = ARTICLES[pk]
     except KeyError:
         raise NotFound(f"Article id {pk} doesn't exists!")
-    user_name = USERS[article["author"]]
+    user_name = User.query.filter_by(id=article["author"]).one_or_none()
     return render_template(
         "article/detail.html",
         article=article,
