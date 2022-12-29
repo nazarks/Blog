@@ -1,0 +1,36 @@
+version: "3.5"
+
+services:
+
+    app:
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        image: app_blog
+        container_name: app_blog
+        env_file:
+            - ./development.env
+        restart: unless-stopped
+        volumes:
+            - ./blog:/app/blog
+
+        ports:
+            - 5000:5000
+        command: bash -c "
+            ./wait-for-postgres.sh pg
+            && python -m flask db upgrade
+            && python -m flask run --host=0.0.0.0"
+        depends_on:
+            - pg
+
+    pg:
+        image: postgres:15.1
+        restart: unless-stopped
+        container_name: postgres_blog
+        env_file:
+            - ./development.env
+        volumes:
+            - ./var/postgresql/data-dev:/var/lib/postgresql/data
+        
+        expose:
+            - 5432:5432
