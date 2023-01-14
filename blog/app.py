@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_migrate import Migrate
+from flask_wtf import CSRFProtect
 
 from blog import commands
 from blog.article.views import article_app
@@ -30,6 +31,10 @@ def register_extensions(app):
     db.init_app(app)
     migrate = Migrate()
     migrate.init_app(app, db, compare_type=True)
+
+    csrf = CSRFProtect()
+    csrf.init_app(app)
+
     login_manager.init_app(app)
 
 
