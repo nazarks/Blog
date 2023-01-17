@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from blog.enums import EnvType
 
 # set environment here
-CONFIG_NAME = EnvType.development.name
+CONFIG_NAME = EnvType.development_local.name
 
 load_dotenv(f"{CONFIG_NAME}.env")
 
@@ -13,6 +13,7 @@ ENV = os.getenv("FLASK_ENV", default=EnvType.production)
 DEBUG = os.getenv("FLASK_DEBUG")
 
 SECRET_KEY = os.getenv("SECRET_KEY")
+WTF_CSRF_ENABLED = True
 
 if CONFIG_NAME == EnvType.development_local.name:
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")

@@ -53,6 +53,16 @@
       "name": "sqlalchemy",
       "depth": 10,
       "includeAllSymbols": true
+    },
+    {
+      "name": "flask_wtf",
+      "depth": 10,
+      "includeAllSymbols": true
+    },
+    {
+      "name": "wtforms",
+      "depth": 10,
+      "includeAllSymbols": true
     }
   ],
   // "flake8-unused-arguments.args": [
