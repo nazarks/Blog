@@ -5,6 +5,7 @@ from flask_wtf import CSRFProtect
 from blog import commands
 from blog.article.views import article_app
 from blog.auth.views import auth_app, login_manager
+from blog.author.view import author_app
 from blog.general.views import general_app
 from blog.models.database import db
 from blog.user.views import user_app
@@ -25,6 +26,7 @@ def register_blueprint(app):
     app.register_blueprint(user_app)
     app.register_blueprint(article_app)
     app.register_blueprint(auth_app)
+    app.register_blueprint(author_app)
 
 
 def register_extensions(app):

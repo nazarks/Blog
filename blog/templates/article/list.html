@@ -6,13 +6,16 @@ Article List
 
 
 {% block body %}
-{% for article_id in articles %}
+{% for article in articles %}
 <ul>
   <li>
-    <a href="{{ url_for('article_app.detail', pk=article_id) }}">
-      {{articles[article_id]['title']}}
+    <a href="{{ url_for('article_app.details', article_id=article.id) }}">
+      {{article.title}}
     </a>
+    by {{ article.author.user.username }}
   </li>
 </ul>
 {% endfor %}
+<hr>
+<a href="{{ url_for('article_app.create') }}">Create new</a>
 {% endblock body %}

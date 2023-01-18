@@ -8,7 +8,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          {% for (endpoint, label) in [('user_app.list', 'Users'), ('article_app.list', 'Articles')] %}
+          {% for (endpoint, label) in [
+            ('user_app.list', 'Users'),
+            ('article_app.list', 'Articles'),
+            ('author_app.list', 'Authors'),
+          ] %}
           <li class="nav-item">
             <a class="nav-link {% if request.endpoint == endpoint %} active {% endif %}" aria-current="page"
               href="{{ url_for(endpoint) }}">
