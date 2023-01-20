@@ -65,7 +65,7 @@ def create_init_users():
             },
             {
                 "username": "Nik",
-                "email": "nik@site.co",
+                "email": "nik@site.com",
                 "is_staff": False,
                 "password": generate_password_hash("test123"),
             },

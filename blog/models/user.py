@@ -1,5 +1,6 @@
 from flask_login import UserMixin
 from sqlalchemy import Boolean, Column, Integer, String
+from sqlalchemy.orm import relationship
 
 from blog.models.database import db
 
@@ -12,6 +13,8 @@ class User(db.Model, UserMixin):
     is_staff = Column(Boolean, nullable=False, default=False)
     first_name = Column(String(120), unique=False, nullable=False, default="", server_default="")
     last_name = Column(String(120), unique=False, nullable=False, default="", server_default="")
+
+    author = relationship("Author", uselist=False, back_populates="user")
 
     def __repr__(self):
         return f"<User #{self.id} {self.username}>"
