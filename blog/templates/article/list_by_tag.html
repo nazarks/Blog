@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% block title %}
-Article List
+Article List by tag: {{ tag.name }}
 {% endblock title %}
 
-{%block body %}
+{% block body %}
+
+<div class="alert alert-success" role="alert">
+  Article List by tag: {{  tag.name }}
+</div>
+
 {% for article in articles %}
 <ul>
   <li>
