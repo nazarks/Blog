@@ -43,3 +43,4 @@ def register_extensions(app):
 def register_commands(app):
     app.cli.add_command(commands.init_db)
     app.cli.add_command(commands.create_init_users)
+    app.cli.add_command(commands.create_tags)

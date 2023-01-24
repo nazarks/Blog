@@ -1,17 +1,26 @@
 {% extends "base.html" %}
 
 {% block title %}
-Article - #{{ article.id }}: {{ article.title }}
+Article - #{{ article.id }}: {{  article.title }}
 {% endblock title %}
-
 
 {% block body %}
 <div class="card">
   <h5 class="card-header">{{article.title}}</h5>
   <div class="card-body">
-    <h5 class="card-title">Tag: {{article.title}} </h5>
-    <p class="card-text"> {{ article.body }} </p>
-    <p class="card-text"><small class="text-muted">Last updated: {{ article.dt_updated.strftime('%d-%m-%Y') }}</small>
+    <h5 class="card-title">
+      {% if article.tags %}
+      <div class="mb-2">Tags:</div>
+      {% for tag in article.tags %}
+      <a class="text-decoration-none" href="{{url_for('article_app.list_by_tag', tag_id=tag.id) }}">
+        <span class="badge text-bg-primary">{{ tag.name }}</span>
+      </a>
+
+      {% endfor %} {% endif %}
+    </h5>
+    <p class="card-text">{{ article.body }}</p>
+    <p class="card-text">
+      <small class="text-muted">Last updated: {{ article.dt_updated.strftime('%d-%m-%Y') }}</small>
     </p>
     Author:
     <a href="{{ url_for('user_app.detail', pk=article.author.user.id) }}" class="card-link">
@@ -20,6 +29,6 @@ Article - #{{ article.id }}: {{ article.title }}
   </div>
 </div>
 
-<br>
+<br />
 <a class="btn btn-primary btn-sm" href="{{ url_for('article_app.list') }}" role="button">Article List</a>
 {% endblock body %}
