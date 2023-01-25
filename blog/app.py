@@ -3,6 +3,7 @@ from flask_migrate import Migrate
 from flask_wtf import CSRFProtect
 
 from blog import commands
+from blog.admin import admin
 from blog.article.views import article_app
 from blog.auth.views import auth_app, login_manager
 from blog.author.view import author_app
@@ -38,6 +39,7 @@ def register_extensions(app):
     csrf.init_app(app)
 
     login_manager.init_app(app)
+    admin.init_app(app)
 
 
 def register_commands(app):

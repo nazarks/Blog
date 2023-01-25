@@ -14,6 +14,8 @@ DEBUG = os.getenv("FLASK_DEBUG")
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 WTF_CSRF_ENABLED = True
+FLASK_ADMIN_SWATCH = "cosmo"
+
 
 if CONFIG_NAME == EnvType.development_local.name:
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
