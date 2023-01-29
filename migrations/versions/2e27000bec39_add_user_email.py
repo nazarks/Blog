@@ -24,8 +24,8 @@ def upgrade():
         batch_op.add_column(sa.Column("email", sa.String(length=255), nullable=False))
         batch_op.create_unique_constraint(None, ["email"])
 
-    create_init_admin()
-    create_init_users()
+    # create_init_admin()
+    # create_init_users()
     # ### end Alembic commands ###
 
 
