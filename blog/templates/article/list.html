@@ -4,6 +4,11 @@ Article List
 {% endblock title %}
 
 {%block body %}
+
+<div class="alert alert-info" role="alert">
+  Articles total : {{ count_articles }}
+</div>
+
 {% for article in articles %}
 <ul>
   <li>
