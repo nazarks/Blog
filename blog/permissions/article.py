@@ -1,4 +1,8 @@
-from combojsonapi.permission.permission_system import PermissionForPatch, PermissionMixin, PermissionUser
+from combojsonapi.permission.permission_system import (
+    PermissionForPatch,
+    PermissionMixin,
+    PermissionUser,
+)
 from flask_combo_jsonapi.exceptions import AccessDenied
 from flask_login import current_user
 
@@ -21,8 +25,8 @@ class ArticlePatchPermission(PermissionMixin):
     ) -> dict:
 
         if current_user.is_authenticated:
-            article = Article.query.filter_by(id=data["id"]).one_or_none()
-            if (article and article.author_id == current_user.author.id) or current_user.is_staff:
+
+            if (obj and current_user.author and obj.author_id == current_user.author.id) or current_user.is_staff:
                 permission_for_patch = user_permission.permission_for_patch_permission(model=Article)
                 return {key: value for key, value in data.items() if key in permission_for_patch.columns}
 
