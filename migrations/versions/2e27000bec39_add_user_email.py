@@ -24,8 +24,6 @@ def upgrade():
         batch_op.add_column(sa.Column("email", sa.String(length=255), nullable=False))
         batch_op.create_unique_constraint(None, ["email"])
 
-    # create_init_admin()
-    # create_init_users()
     # ### end Alembic commands ###
 
 
@@ -36,39 +34,3 @@ def downgrade():
         batch_op.drop_column("email")
 
     # ### end Alembic commands ###
-
-
-def create_init_admin():
-    op.bulk_insert(
-        User.__table__,
-        [
-            {
-                "username": "admin",
-                "email": "admin@site.com",
-                "is_staff": True,
-                "password": generate_password_hash("test123"),
-            },
-        ],
-    )
-    print("admin is created")
-
-
-def create_init_users():
-    op.bulk_insert(
-        User.__table__,
-        [
-            {
-                "username": "James",
-                "email": "ajames@site.com",
-                "is_staff": False,
-                "password": generate_password_hash("test123"),
-            },
-            {
-                "username": "Nik",
-                "email": "nik@site.com",
-                "is_staff": False,
-                "password": generate_password_hash("test123"),
-            },
-        ],
-    )
-    print("users James, Nik is created")

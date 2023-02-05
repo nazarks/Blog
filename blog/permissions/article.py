@@ -1,8 +1,4 @@
-from combojsonapi.permission.permission_system import (
-    PermissionForPatch,
-    PermissionMixin,
-    PermissionUser,
-)
+from combojsonapi.permission.permission_system import PermissionForPatch, PermissionMixin, PermissionUser
 from flask_combo_jsonapi.exceptions import AccessDenied
 from flask_login import current_user
 
