@@ -5,12 +5,13 @@ from dotenv import load_dotenv
 from blog.enums import EnvType
 
 # set environment here
-CONFIG_NAME = EnvType.development_local.name
+CONFIG_NAME = EnvType.production.name
 
 load_dotenv(f"{CONFIG_NAME}.env")
 
 ENV = os.getenv("FLASK_ENV", default=EnvType.production)
 DEBUG = os.getenv("FLASK_DEBUG")
+API_URL = os.getenv("API_URL")
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 WTF_CSRF_ENABLED = True

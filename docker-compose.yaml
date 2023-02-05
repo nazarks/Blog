@@ -9,8 +9,7 @@ services:
         image: app_blog
         container_name: app_blog
         env_file:
-            - ./development.env
-        restart: unless-stopped
+            - ./production.env
         volumes:
             - ./blog:/app/blog
 
@@ -19,18 +18,17 @@ services:
         command: bash -c "
             ./wait-for-postgres.sh pg
             && python -m flask db upgrade
-            && python -m flask run --host=0.0.0.0"
+            && gunicorn --workers 2 --bind 0.0.0.0:5000 wsgi:app"
         depends_on:
             - pg
 
     pg:
         image: postgres:15.1
-        restart: unless-stopped
         container_name: postgres_blog
         env_file:
-            - ./development.env
+            - ./production.env
         volumes:
-            - ./var/postgresql/data-dev:/var/lib/postgresql/data
+            - ./var/postgresql/data-prod:/var/lib/postgresql/data
         
         expose:
             - 5432:5432

@@ -20,7 +20,6 @@ def upgrade():
     with op.batch_alter_table("user", schema=None) as batch_op:
         batch_op.add_column(sa.Column("first_name", sa.String(length=120), server_default="", nullable=False))
         batch_op.add_column(sa.Column("last_name", sa.String(length=120), server_default="", nullable=False))
-        batch_op.create_unique_constraint(batch_op.f("uq_user_username"), ["username"])
 
     # ### end Alembic commands ###
 
